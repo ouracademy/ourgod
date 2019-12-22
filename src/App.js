@@ -1,13 +1,12 @@
 import React from "react"
 import { Router } from "@reach/router"
 import { Home } from "./home"
-
-let Dash = () => <div>Dash</div>
+import { Profile } from "./profile"
 
 const App = () => (
   <Router>
     <Home path="/" />
-    <Dash path="dashboard" />
+    <Profile path=":partyId" />
   </Router>
 )
 
