@@ -1,3 +1,4 @@
 import React from "react"
+import { Layout } from "./layout"
 
-export default () => <div>Hello</div>
+export default () => <Layout>Hello</Layout>
