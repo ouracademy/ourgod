@@ -18,7 +18,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>
 const Map = ({ latitude, longitude, zoom = 16, text }) => (
   <div style={{ height: "400px", width: "400px" }}>
     <GoogleMapReact
-      bootstrapURLKeys={{ key: "AIzaSyChdF-WFU6PaLwZ3DjKpaNY8IHfk1enffw" }}
+      bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_KEY }}
       defaultCenter={{ lat: latitude, lng: longitude }}
       defaultZoom={zoom}
     >
