@@ -1,7 +1,7 @@
 import React from "react"
 import GoogleMapReact from "google-map-react"
 import { Layout } from "./layout"
-import { Box, Grid } from "grommet"
+import { Box, Grid, Heading } from "grommet"
 
 const parties = [
   {
@@ -15,19 +15,26 @@ const parties = [
   }
 ]
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>
+const Map = ({ latitude, longitude, zoom = 16, text }) => {
+  const renderMarker = (map, maps) => {
+    new maps.Marker({
+      map: map,
+      position: new maps.LatLng(latitude, longitude)
+    })
+  }
 
-const Map = ({ latitude, longitude, zoom = 16, text }) => (
-  <Box width="xlarge" height="medium">
-    <GoogleMapReact
-      bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_KEY }}
-      defaultCenter={{ lat: latitude, lng: longitude }}
-      defaultZoom={zoom}
-    >
-      <AnyReactComponent lat={latitude} lng={longitude} text={text} />
-    </GoogleMapReact>
-  </Box>
-)
+  return (
+    <Box width="xxlarge" height="medium">
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_KEY }}
+        defaultCenter={{ lat: latitude, lng: longitude }}
+        defaultZoom={zoom}
+        yesIWantToUseGoogleMapApiInternals={true}
+        onGoogleApiLoaded={({ map, maps }) => renderMarker(map, maps)}
+      />
+    </Box>
+  )
+}
 
 const mainSchedule = ["Jueves 8:00pm", "Domingo 9:00am y 11:00am"]
 
@@ -65,7 +72,9 @@ const ScheduleAndAddress = ({ party }) => (
   <Box direction="row">
     <Box fill>
       <p>Av. Canadá 1290 / 4to Piso</p>
-      <h2>Horarios</h2>
+      <Heading level="3" margin={{ vertical: "small" }}>
+        Horarios
+      </Heading>
       <Schedule schedule={mainSchedule} />
       <GroupsSchedule></GroupsSchedule>
     </Box>
@@ -81,7 +90,7 @@ const ScheduleAndAddress = ({ party }) => (
 
 const GroupsSchedule = () => (
   <div>
-    <h2>Grupos</h2>
+    <Heading level="3">Grupos</Heading>
     <Grid
       columns={{
         count: 2,
@@ -90,7 +99,9 @@ const GroupsSchedule = () => (
     >
       {scheduleByGroup.map(x => (
         <div key={x.name}>
-          <h4>{x.name}</h4>
+          <Heading level="4" margin={{ vertical: "xsmall" }}>
+            {x.name}
+          </Heading>
           <Schedule schedule={x.schedule} />
         </div>
       ))}
@@ -101,7 +112,7 @@ const GroupsSchedule = () => (
 const Schedule = ({ schedule }) => (
   <div>
     {schedule.map(f => (
-      <p>{f}</p>
+      <p key={f}>{f}</p>
     ))}
   </div>
 )
