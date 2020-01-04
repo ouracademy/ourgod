@@ -69,7 +69,7 @@ export const Profile = ({ partyId }) => {
 }
 
 const ScheduleAndAddress = ({ party }) => (
-  <Box direction="row">
+  <Box direction="row-responsive">
     <Box fill>
       <p>Av. Canadá 1290 / 4to Piso</p>
       <Heading level="3" margin={{ vertical: "small" }}>
