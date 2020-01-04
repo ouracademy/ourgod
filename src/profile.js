@@ -1,7 +1,7 @@
 import React from "react"
 import GoogleMapReact from "google-map-react"
 import { Layout } from "./layout"
-import { Box, Grid, Heading } from "grommet"
+import { Box, Grid, Heading, Image } from "grommet"
 
 const parties = [
   {
@@ -62,17 +62,66 @@ export const Profile = ({ partyId }) => {
 
   return (
     <Layout>
-      <h1>{party.name}</h1>
-      <ScheduleAndAddress party={party} />
+      <Box gap="large">
+        <h1>{party.name}</h1>
+        <Groups />
+        <ScheduleAndAddress party={party} />
+      </Box>
     </Layout>
   )
 }
 
+const groups = [
+  {
+    name: "Ministerio de mujeres",
+    abbreviation: "MUJERES",
+    imageURL: "mujeres.jpg"
+  },
+  {
+    name: "Ministerio de Jóvenes",
+    abbreviation: "UNO",
+    imageURL: "uno.jpg"
+  },
+  {
+    name: "Ministerio de interseción",
+    abbreviation: "Interseción",
+    imageURL: "intercesion.png"
+  }
+  // {
+  //   name: "Ministerio de Jóvenes Adultos",
+  //   abbreviation: "JÓVENES JVP",
+  //   imageURL: "jvp.jpg"
+  // }
+]
+
+const Groups = () => (
+  <Box>
+    <h2>Dando el siguiente paso...</h2>
+    <div>
+      <h3>Grupos</h3>
+      <p>
+        Creemos que Dios nos creó para vivir relacionándonos unos con otros y
+        solo así podemos vivir la vida plena que Él quiere para nosotros.
+      </p>
+      <Box direction="row-responsive" gap="medium">
+        {groups.map(x => (
+          <Box height="30vh" width="30vh">
+            <Image fit src={x.imageURL} alt={x.abbreviation}></Image>
+          </Box>
+        ))}
+      </Box>
+    </div>
+  </Box>
+)
+
 const ScheduleAndAddress = ({ party }) => (
   <Box direction="row-responsive">
     <Box fill>
+      <Heading level="3" margin={{ vertical: "xsmall" }}>
+        Dirección
+      </Heading>
       <p>Av. Canadá 1290 / 4to Piso</p>
-      <Heading level="3" margin={{ vertical: "small" }}>
+      <Heading level="3" margin={{ vertical: "xsmall" }}>
         Horarios
       </Heading>
       <Schedule schedule={mainSchedule} />
@@ -90,7 +139,7 @@ const ScheduleAndAddress = ({ party }) => (
 
 const GroupsSchedule = () => (
   <div>
-    <Heading level="3">Grupos</Heading>
+    <Heading level="4">Grupos</Heading>
     <Grid
       columns={{
         count: 2,
@@ -99,7 +148,7 @@ const GroupsSchedule = () => (
     >
       {scheduleByGroup.map(x => (
         <div key={x.name}>
-          <Heading level="4" margin={{ vertical: "xsmall" }}>
+          <Heading level="5" margin={{ vertical: "xsmall" }}>
             {x.name}
           </Heading>
           <Schedule schedule={x.schedule} />

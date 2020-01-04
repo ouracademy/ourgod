@@ -35,6 +35,11 @@ const links = [
   }
 ]
 
+// Novedades
+// Calendario de actividades
+// Servicios (anteriores)
+// Devocional
+
 const Nav = ({ title }) => (
   <Box as="header" direction="row" align="center" justify="between">
     <Link to="/" style={{ textDecoration: "none" }}>
