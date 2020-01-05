@@ -125,16 +125,33 @@ const DayMessage = () => (
           ></Button>
         </a>
       </Box>
-      <iframe
-        src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fpuertaalcielomc%2Fvideos%2F916860155368025%2F&show_text=0&width=560"
-        width="560"
-        height="315"
-        style={{ border: "none", overflow: "hidden" }}
-        scrolling="no"
-        frameBorder="0"
-        allowFullScreen={true}
-        title="Mensaje"
-      ></iframe>
+      <div
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          paddingBottom: "56.25%",
+          height: "0"
+        }}
+      >
+        <iframe
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fpuertaalcielomc%2Fvideos%2F916860155368025%2F&show_text=0&width=560"
+          width="560"
+          height="315"
+          style={{
+            border: "none",
+
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%"
+          }}
+          scrolling="no"
+          frameBorder="0"
+          allowFullScreen={true}
+          title="Mensaje"
+        ></iframe>
+      </div>
     </Box>
   </Box>
 )
