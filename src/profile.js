@@ -80,6 +80,30 @@ const groups = [
   // }
 ]
 
+const DayMessage = () => (
+  <Box>
+    <Heading level="2" size="large">
+      Mensaje
+    </Heading>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse impedit sunt
+      eaque dicta, maxime repellat vitae architecto accusamus! Rem natus veniam
+      obcaecati explicabo rerum veritatis delectus maxime esse beatae ipsum.
+    </p>
+    <iframe
+      src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fpuertaalcielomc%2Fvideos%2F916860155368025%2F&show_text=0&width=560"
+      width="560"
+      height="315"
+      style={{ border: "none", overflow: "hidden" }}
+      scrolling="no"
+      frameborder="0"
+      allowTransparency="true"
+      allowFullScreen="true"
+      title="Mensaje"
+    ></iframe>
+  </Box>
+)
+
 const Groups = () => (
   <Box>
     <Heading level="2" size="large">
@@ -170,6 +194,7 @@ export const Profile = ({ partyId }) => {
         <Heading level="1" size="large">
           {party.name}
         </Heading>
+        <DayMessage />
         <Groups />
         <ScheduleAndAddress party={party} />
       </Box>
