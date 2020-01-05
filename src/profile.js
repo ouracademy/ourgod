@@ -1,7 +1,7 @@
 import React from "react"
 import GoogleMapReact from "google-map-react"
 import { Layout } from "./layout"
-import { Box, Grid, Heading, Image } from "grommet"
+import { Box, Grid, Heading, Image, Paragraph } from "grommet"
 
 const parties = [
   {
@@ -57,20 +57,6 @@ const scheduleByGroup = [
   }
 ]
 
-export const Profile = ({ partyId }) => {
-  const party = parties.find(x => x.id === partyId)
-
-  return (
-    <Layout>
-      <Box gap="large">
-        <h1>{party.name}</h1>
-        <Groups />
-        <ScheduleAndAddress party={party} />
-      </Box>
-    </Layout>
-  )
-}
-
 const groups = [
   {
     name: "Ministerio de mujeres",
@@ -96,17 +82,26 @@ const groups = [
 
 const Groups = () => (
   <Box>
-    <h2>Dando el siguiente paso...</h2>
+    <Heading level="2" size="large">
+      Dando el siguiente paso...
+    </Heading>
     <div>
-      <h3>Grupos</h3>
-      <p>
+      <Heading level="3" size="large">
+        Grupos
+      </Heading>
+      <Paragraph size="large">
         Creemos que Dios nos creó para vivir relacionándonos unos con otros y
         solo así podemos vivir la vida plena que Él quiere para nosotros.
-      </p>
-      <Box direction="row-responsive" gap="medium">
+      </Paragraph>
+      <Box
+        direction="row-responsive"
+        margin={{ vertical: "large" }}
+        gap="large"
+        style={{ alignItems: "center" }}
+      >
         {groups.map(x => (
-          <Box height="30vh" width="30vh">
-            <Image fit src={x.imageURL} alt={x.abbreviation}></Image>
+          <Box height="30vh" width="30vh" justify="center" key={x.name}>
+            <Image fit="contain" src={x.imageURL} alt={x.abbreviation}></Image>
           </Box>
         ))}
       </Box>
@@ -165,3 +160,19 @@ const Schedule = ({ schedule }) => (
     ))}
   </div>
 )
+
+export const Profile = ({ partyId }) => {
+  const party = parties.find(x => x.id === partyId)
+
+  return (
+    <Layout>
+      <Box gap="xlarge">
+        <Heading level="1" size="large">
+          {party.name}
+        </Heading>
+        <Groups />
+        <ScheduleAndAddress party={party} />
+      </Box>
+    </Layout>
+  )
+}
