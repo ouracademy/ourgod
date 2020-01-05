@@ -1,7 +1,8 @@
 import React from "react"
 import GoogleMapReact from "google-map-react"
 import { Layout } from "./layout"
-import { Box, Grid, Heading, Image, Paragraph } from "grommet"
+import { Box, Grid, Heading, Image, Paragraph, Button } from "grommet"
+import { LinkNext } from "grommet-icons"
 
 const parties = [
   {
@@ -83,24 +84,58 @@ const groups = [
 const DayMessage = () => (
   <Box>
     <Heading level="2" size="large">
-      Mensaje
+      Un mensaje
     </Heading>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse impedit sunt
-      eaque dicta, maxime repellat vitae architecto accusamus! Rem natus veniam
-      obcaecati explicabo rerum veritatis delectus maxime esse beatae ipsum.
-    </p>
-    <iframe
-      src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fpuertaalcielomc%2Fvideos%2F916860155368025%2F&show_text=0&width=560"
-      width="560"
-      height="315"
-      style={{ border: "none", overflow: "hidden" }}
-      scrolling="no"
-      frameborder="0"
-      allowTransparency="true"
-      allowFullScreen="true"
-      title="Mensaje"
-    ></iframe>
+    <Box direction="row-responsive" gap="large" margin={{ vertical: "medium" }}>
+      <Box justify="center">
+        <Paragraph size="large" margin={{ vertical: "xsmall" }}>
+          Creemos que la presencia de Dios puede tocar y transformar las vidas.
+          Nuestra esperanza es que vivas tu propia experiencia real con Él.
+        </Paragraph>
+      </Box>
+      <Box>
+        <p>
+          Mensaje Diario/Biblia de Promesas: 04 de Enero: Hechos Sobre Palabras
+          Palabra: Así también la fe, si no tiene obras, es muerta en sí misma
+          (Santiago 2:17)
+        </p>
+        <p>
+          Una importante lección que me fue dada de la gran sabiduría de mi
+          abuela materna, es que no sólo son nuestras palabras las que convencen
+          a ...<a href="/">Leer más</a>
+        </p>
+      </Box>
+    </Box>
+
+    <Box direction="row-responsive" gap="large" margin={{ vertical: "medium" }}>
+      <Box justify="center">
+        <Paragraph size="large">
+          Tambien puedes ver nuestras predicas en vivo. Siguenos en facebook,
+          donde además compartimos mensajes de la biblia cada día
+        </Paragraph>
+        <a
+          href="https://www.facebook.com/pg/puertaalcielomc/videos/?ref=page_internal"
+          target="__blank"
+        >
+          <Button
+            reverse
+            label="Ver online"
+            primary
+            icon={<LinkNext />}
+          ></Button>
+        </a>
+      </Box>
+      <iframe
+        src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fpuertaalcielomc%2Fvideos%2F916860155368025%2F&show_text=0&width=560"
+        width="560"
+        height="315"
+        style={{ border: "none", overflow: "hidden" }}
+        scrolling="no"
+        frameBorder="0"
+        allowFullScreen={true}
+        title="Mensaje"
+      ></iframe>
+    </Box>
   </Box>
 )
 
